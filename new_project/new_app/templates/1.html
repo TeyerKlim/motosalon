@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МотоЧасть — Мотосалон</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?v=3">
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo" onclick="closeProductDetail()">МотоЧасть</a>
+        <nav>
+            <a href="#catalog" onclick="closeProductDetail()">Мотоциклы</a>
+            <a href="#accessories" onclick="closeProductDetail()">Аксессуары</a>
+            <a href="#service" onclick="closeProductDetail()">Сервис</a>
+            <a href="#contacts" onclick="closeProductDetail()">Контакты</a>
+            <button type="button" id="fav-btn" class="fav-nav-btn">♥ Избранное (<span id="fav-count">0</span>)</button>
+            <a href="#order" class="btn-orange-sm" onclick="closeProductDetail()">Оформить заказ</a>
+        </nav>
+    </div>
+</header>
+
+<section id="product-detail" class="product-detail hidden">
+    <div class="container">
+        <button type="button" class="btn-orange back-btn" onclick="closeProductDetail()">← Назад на главную</button>
+        <h1 id="detail-title" class="detail-title">Название товара</h1>
+        <div class="detail-img-box"><img id="detail-img" src="" alt="Фото товара"></div>
+        <p id="detail-desc" class="detail-desc">Описание товара</p>
+        <p id="detail-price" class="detail-price">0 руб.</p>
+        <div class="detail-specs">
+            <h4>Характеристики:</h4>
+            <ul id="detail-specs-list"></ul>
+        </div>
+        <div class="detail-actions">
+            <button type="button" id="detail-order-btn" class="btn-orange">Заказать</button>
+            <button type="button" id="detail-fav-btn" class="btn-orange">♥ Добавить в избранное</button>
+        </div>
+    </div>
+</section>
+
+<div id="home-view">
+    <section class="hero">
+        <div class="container">
+            <h1>Ваш путь начинается здесь</h1>
+            <p>Широкий выбор мотоциклов, аксессуаров и услуг для настоящих ценителей скорости и свободы</p>
+            <a href="#catalog" class="btn-orange">Смотреть каталог</a>
+        </div>
+    </section>
+
+    <div class="search-bar-wrap">
+        <div class="container">
+            <form id="search-form" class="search-form">
+                <input type="text" id="search-input" placeholder="Поиск по мотоциклам и аксессуарам...">
+                <button type="submit" class="btn-orange">Найти</button>
+            </form>
+        </div>
+    </div>
+
+    <main class="container">
+        <section id="catalog">
+            <h2 class="section-title">Наши мотоциклы</h2>
+            <div id="motorcycles-list" class="grid">Загрузка...</div>
+        </section>
+
+        <section id="accessories">
+            <h2 class="section-title">Аксессуары</h2>
+            <div id="accessories-list" class="grid">Загрузка...</div>
+        </section>
+
+        <div class="forms-row">
+            <section id="order" class="form-box">
+                <h3>Оформить заказ</h3>
+                <form id="order-form">
+                    <input type="text" id="order-name" placeholder="Ваше имя" required>
+                    <input type="tel" id="order-phone" placeholder="Телефон" required>
+                    <select id="order-moto" required><option value="">Выберите мотоцикл...</option></select>
+                    <button type="submit" class="btn-orange">Оставить заявку</button>
+                </form>
+                <p id="order-msg" class="status-msg"></p>
+            </section>
+
+            <section id="service" class="form-box">
+                <h3>Запись на сервис</h3>
+                <form id="service-form">
+                    <input type="text" id="service-name" placeholder="Ваше имя" required>
+                    <input type="text" id="service-bike" placeholder="Модель вашего мотоцикла" required>
+                    <textarea id="service-desc" placeholder="Опишите проблему или нужную услугу" rows="3" required></textarea>
+                    <button type="submit" class="btn-orange">Записаться</button>
+                </form>
+                <p id="service-msg" class="status-msg"></p>
+            </section>
+        </div>
+    </main>
+</div>
+
+<footer id="contacts" class="contacts-section">
+    <div class="container">
+        <h2>Контакты</h2>
+        <div class="contacts-grid">
+            <div>
+                <h4>Наш адрес</h4>
+                <p>г. Сургут, ул. Мотоциклетная, д. 7</p>
+                <p>Пн-Пт: 9:00 - 20:00</p>
+                <p>Сб-Вс: 10:00 - 18:00</p>
+            </div>
+            <div>
+                <h4>Телефоны</h4>
+                <p>+7 (495) 123-45-67</p>
+                <p>+7 (495) 765-43-21</p>
+            </div>
+            <div>
+                <h4>Электронная почта</h4>
+                <p><a href="mailto:info@motochast.ru">info@motochast.ru</a></p>
+                <p><a href="mailto:sales@motochast.ru">sales@motochast.ru</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="fav-modal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Избранное</h3>
+            <button type="button" id="close-fav" class="close-btn">✕</button>
+        </div>
+        <div id="fav-items-list">Список избранного пуст.</div>
+    </div>
+</div>
+
+<script src="{% static 'script.js' %}?v=3"></script>
+</body>
+</html>
